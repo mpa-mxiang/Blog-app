@@ -221,3 +221,9 @@ FOREIGN KEY ("post_id")
   [1m[36mActiveRecord::InternalMetadata Load (5.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6617535630868360695)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (8.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "bio", "photo", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["bio", "Teacher from Mexico."], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["posts_counter", nil], ["created_at", "2023-08-21 18:01:47.591778"], ["updated_at", "2023-08-21 18:01:47.591778"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "bio", "photo", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lilly"], ["bio", "Teacher from Poland."], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["posts_counter", nil], ["created_at", "2023-08-21 18:01:47.609090"], ["updated_at", "2023-08-21 18:01:47.609090"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
