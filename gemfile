@@ -1,3 +1,0 @@
-group :development do
-    gem 'rails-erd', github: 'voormedia/rails-erd'
-  end
