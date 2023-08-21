@@ -1,8 +1,8 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
-
+  after_save :update_likes_count
   def update_likes_count
-    update(likes_count: likes.count)
+    post.increment!(:likes_count)
   end
 end
