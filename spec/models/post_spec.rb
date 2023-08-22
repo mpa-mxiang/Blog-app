@@ -90,5 +90,40 @@ RSpec.describe Post, type: :model do
     }.to change { user.reload.posts_counter }.by(1)
   end
 end
+describe '#recent_comments' do
+it 'returns the 5 most recent comments for the post' do
+  user = User.create(name: 'John', posts_counter: 0)
+  post = Post.create(title: 'Title', comments_counter: 0, likes_counter: 0, author: user)
+  
+  # Create comments for the post
+  comment1 = post.comments.create(user: user, text: 'Comment 1')
+  comment2 = post.comments.create(user: user, text: 'Comment 2')
+  comment3 = post.comments.create(user: user, text: 'Comment 3')
+  comment4 = post.comments.create(user: user, text: 'Comment 4')
+  comment5 = post.comments.create(user: user, text: 'Comment 5')
+  comment6 = post.comments.create(user: user, text: 'Comment 6')
+  
+  expect(post.recent_comments).to eq([comment6, comment5, comment4, comment3, comment2])
+end
+
+
+it 'returns fewer than 5 comments if the post has fewer comments' do
+  user = User.create(name: 'John', posts_counter: 0)
+  post = Post.create(title: 'Title', comments_counter: 0, likes_counter: 0, author: user)
+
+  comment1 = post.comments.create(user: user, text: 'Comment 1', created_at: 1.day.ago)
+  comment2 = post.comments.create(user: user, text: 'Comment 2', created_at: 2.days.ago)
+  comment3 = post.comments.create(user: user, text: 'Comment 3', created_at: 3.days.ago)
+
+  expected_comments = [comment3, comment2, comment1].sort_by(&:created_at).reverse
+
+  actual_comments = post.recent_comments
+
+  expect(actual_comments).to eq(expected_comments)
+end
+
+
+
+end
 
 end
