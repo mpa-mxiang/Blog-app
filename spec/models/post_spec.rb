@@ -75,4 +75,20 @@ RSpec.describe Post, type: :model do
     )
     expect(post).to_not be_valid
   end
+  describe '#increment_user_posts_count' do
+  it 'increments the user\'s posts_counter' do
+    user = User.create(name: 'John', posts_counter: 0)
+    post = Post.create(
+      title: 'Title',
+      comments_counter: 0,
+      likes_counter: 0,
+      author: user
+    )
+
+    expect {
+      post.send(:increment_user_posts_count) # Use send to invoke private method
+    }.to change { user.reload.posts_counter }.by(1)
+  end
+end
+
 end
