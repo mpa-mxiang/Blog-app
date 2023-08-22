@@ -26,9 +26,9 @@ RSpec.describe Like, type: :model do
     user = User.create(name: 'John', posts_counter: 0)
     post = Post.create(title: 'Title', comments_counter: 0, likes_counter: 0, author: user)
 
-    expect {
+    expect do
       Like.create(user: user, post: post)
       post.reload
-    }.to change(post, :likes_counter).by(1)
+    end.to change(post, :likes_counter).by(1)
   end
 end
