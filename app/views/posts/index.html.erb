@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>All Users</title>
+  <title>All Posts</title>
 </head>
 <body>
-  <h1>All Users</h1>
+  <h1>All Posts</h1>
   <ul>
-    <% @users.each do |user| %>
+    <% @posts.each do |post| %>
       <li>
-        <img src="<%= user.photo %>" alt="<%= user.name %>">
-        <h1><%= user.name %></h1>
-        <p>Number of Posts: <%= user.posts.count %></p>
+        <h2><%= post.title %></h2>
+        <p><%= post.created_at.strftime('%B %d, %Y') %></p>
+        <p><%= post.text %></p>
       </li>
     <% end %>
   </ul>
