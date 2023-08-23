@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all # Fetch all posts from the database
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def show

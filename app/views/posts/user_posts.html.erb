@@ -5,9 +5,15 @@
 </head>
 <body>
   <h1>User's Posts</h1>
+  <h2>User: <%= @user.name %></h2>
   <ul>
-    <li>User's Post 1</li>
-    <li>User's Post 2</li>
+    <% @user.posts.each do |post| %>
+      <li>
+        <h3><%= post.title %></h3>
+        <p><%= post.created_at.strftime('%B %d, %Y') %></p>
+        <p><%= post.content %></p>
+      </li>
+    <% end %>
   </ul>
 </body>
 </html>
