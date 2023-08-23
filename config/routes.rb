@@ -9,9 +9,7 @@ Rails.application.routes.draw do
     # Single user page
     get '/users/:id', to: 'users#show', as: 'user'
   
-    # All posts by a given user page
-    get '/users/:user_id/posts', to: 'posts#index', as: 'user_posts'
-  
-    # Single post page
+    get '/posts', to: 'posts#index', as: 'posts'
     get '/posts/:id', to: 'posts#show', as: 'post'
 end
+
