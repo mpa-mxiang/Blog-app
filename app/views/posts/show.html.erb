@@ -2,12 +2,15 @@
 <html>
 <head>
   <title>Post Details</title>
+  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/posts.css">
 </head>
 <body>
   <h1>Post Details</h1>
-  <h2><%= @post.title %></h2>
-  <p>Author: <%= @post.author.name %></p>
-  <p>Created At: <%= @post.created_at.strftime('%B %d, %Y') %></p>
-  <p><%= @post.text %></p>
+  <div class="post-details">
+    <h2><%= @post.title %></h2>
+    <p class="post-info">Author: <%= @post.author.name %></p>
+    <p class="post-info">Created At: <%= @post.created_at.strftime('%B %d, %Y') %></p>
+    <p class="post-text"><%= @post.text %></p>
+  </div>
 </body>
 </html>

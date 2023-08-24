@@ -2,15 +2,16 @@
 <html>
 <head>
   <title>All Users</title>
+  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/users.css">
 </head>
 <body>
   <h1>All Users</h1>
-  <ul>
+  <ul class="user-list">
     <% @users.each do |user| %>
-      <li>
+      <li class="user-item">
         <img src="<%= user.photo %>" alt="<%= user.name %>">
         <h1><%= user.name %></h1>
-        <p>Number of Posts: <%= user.posts.count %></p>
+        <p class="user-info">Number of Posts: <%= user.posts.count %></p>
       </li>
     <% end %>
   </ul>

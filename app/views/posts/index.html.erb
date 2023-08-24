@@ -2,15 +2,17 @@
 <html>
 <head>
   <title>All Posts</title>
+  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/posts.css">
 </head>
 <body>
   <h1>All Posts</h1>
-  <ul>
+  <ul class="post-list">
     <% @posts.each do |post| %>
-      <li>
+      <li class="post-item">
         <h2><%= post.title %></h2>
-        <p><%= post.created_at.strftime('%B %d, %Y') %></p>
-        <p><%= post.text %></p>
+        <p class="post-info">Author: <%= post.author.name %></p>
+        <p class="post-info">Created At: <%= post.created_at.strftime('%B %d, %Y') %></p>
+        <p class="post-text"><%= post.text %></p>
       </li>
     <% end %>
   </ul>
