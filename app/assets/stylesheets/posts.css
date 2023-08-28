@@ -30,3 +30,9 @@ h1 {
 .post-text {
   font-size: 16px;
 }
+
+.btn-div {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}

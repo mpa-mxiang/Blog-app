@@ -7,14 +7,18 @@
 <body>
   <h1>All Posts</h1>
   <ul class="post-list">
+    <li><%= render @user %></li>
     <% @posts.each do |post| %>
-      <li class="post-item">
-        <h2><%= post.title %></h2>
-        <p class="post-info">Author: <%= post.author.name %></p>
-        <p class="post-info">Created At: <%= post.created_at.strftime('%B %d, %Y') %></p>
-        <p class="post-text"><%= post.text %></p>
-      </li>
+      <li><%= render post %></li>
+      <% post.recent_comments.each do |comment| %>
+        <li><%= render 'comment', comment: comment %></li>
+      <% end %>
     <% end %>
   </ul>
+  <div class="btn-div">
+    <%= link_to "Home", users_path %>
+    
+    <%= link_to "Pagination", user_path(@user) %>  
+  </div>
 </body>
 </html>
