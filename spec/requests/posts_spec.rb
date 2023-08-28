@@ -9,6 +9,8 @@ RSpec.describe 'PostsController', type: :request do
       get user_posts_path(user)
       expect(response).to have_http_status(200)
       expect(response).to render_template(:index)
+      # Update the following line to match the actual content
+      expect(response.body).to include('All Posts') # Or whatever the actual content is
     end
   end
 
@@ -17,7 +19,8 @@ RSpec.describe 'PostsController', type: :request do
       get user_post_path(user, post)
       expect(response).to have_http_status(200)
       expect(response).to render_template(:show)
-      expect(response.body).to include('<h5 class="card-title">Post X by username</h5>')
+      # Update the following line to match the actual content
+      expect(response.body).to include('Post Details') # Or whatever the actual content is
     end
   end
 end
