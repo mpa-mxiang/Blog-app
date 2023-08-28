@@ -12,7 +12,6 @@ RSpec.describe 'PostsController', type: :request do
       # Update the following line to match the actual content
       expect(response.body).to include('All Posts') # Or whatever the actual content is
     end
-    
   end
 
   describe 'GET /users/:id/posts/:id' do
@@ -23,6 +22,5 @@ RSpec.describe 'PostsController', type: :request do
       # Update the following line to match the actual content
       expect(response.body).to include('Post Details') # Or whatever the actual content is
     end
-    
   end
 end
