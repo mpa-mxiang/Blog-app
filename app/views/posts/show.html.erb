@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Single Post</title>
+  <title>Post Details</title>
 </head>
 <body>
-  <h1>Single Post</h1>
-  <!-- Placeholder for displaying post details -->
-  <div>
-    <h2>Post Title</h2>
-    <p>Post Content</p>
-  </div>
+  <h1>Post Details</h1>
+  <h2><%= @post.title %></h2>
+  <p>Author: <%= @post.author.name %></p>
+  <p>Created At: <%= @post.created_at.strftime('%B %d, %Y') %></p>
+  <p><%= @post.text %></p>
 </body>
 </html>
