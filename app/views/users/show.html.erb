@@ -2,12 +2,36 @@
 <html>
 <head>
   <title>User Details</title>
-  <link rel="stylesheet" type="text/css" href="/assets/users.css"> <!-- Include your CSS file -->
+  <link rel="stylesheet" type="text/css" href="/assets/users.css">
 </head>
 <body>
+  <!-- Header -->
   <h1>User Details</h1>
+
+  <!-- User Details Section -->
   <div class="user-details">
-    <h2>Name: <%= @user.name %></h2>
+    <!-- User's Name -->
+    <h2 class="user-info">Name: <%= @user.name %></h2>
+
+    <!-- Recent Posts Section -->
+    <h3 class="user-info">Recent Posts:</h3>
+    <ul class="user-list">
+      <% @user.recent_posts.each do |post| %>
+        <li class="user-item">
+          <!-- Post Title -->
+          <h4><%= post.title %></h4>
+          
+          <!-- Post Creation Date -->
+          <p class="user-info">Created At: <%= post.created_at.strftime('%B %d, %Y') %></p>
+          
+          <!-- Post Text -->
+          <p><%= post.text %></p>
+        </li>
+      <% end %>
+    </ul>
+
+    <!-- "See All Posts" Button -->
+    <%= link_to "See All Posts", user_posts_path(@user), class: "user-info" %>
   </div>
 </body>
 </html>
