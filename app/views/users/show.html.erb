@@ -1,13 +1,21 @@
-<main class='content container'>
-  <ul>
-    <li><%= render @user %></li>
-    <li><%= render 'bio', user: @user %></li>
-    <% @user.recent_posts.each do |post| %>
-      <li><%= render post %></li>
-    <% end %>
-  </ul>
-  <div class="text-center d-flex justify-content-around">
-    <%= link_to "Home", users_path %>
-    <%= link_to 'See all posts', user_posts_path(@user)' %>
-  </div>
-</main>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Details</title>
+  <link rel="stylesheet" type="text/css" href="/assets/users.css"> <!-- Include your CSS file -->
+</head>
+<body>
+  <h1>User Details</h1>
+  <div class="user-details">
+  <li><%= render @user %></li>
+  <li><%= render 'bio', user: @user %></li>
+  <% @user.recent_posts.each do |post| %>
+    <li><%= render post %></li>
+  <% end %>
+</ul>
+<div class="text-center d-flex justify-content-around">
+  <%= link_to "Home", users_path %>
+  <%= link_to 'See all posts', user_posts_path(@user)' %>
+</div>
+</body>
+</html>
