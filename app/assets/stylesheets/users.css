@@ -23,6 +23,7 @@ h1 {
 .user-info {
   font-size: 14px;
   color: #555;
+  margin-left: auto;
 }
 
 .user-item img {
@@ -32,8 +33,4 @@ h1 {
 
 .user-item h1 {
   margin: 0;
-}
-
-.user-info {
-  margin-left: auto;
 }
