@@ -27,6 +27,11 @@
     <% end %>
   </ul>
 </div>
+<%= form_for([@user, @user.posts.build]) do |f| %>
+  <%= f.text_field :title, placeholder: 'Post Title' %>
+  <%= f.text_area :text, placeholder: 'Post Content' %>
+  <%= f.submit 'Create Post' %>
+<% end %>
 <div>
   <%= link_to "See All Posts", user_posts_path(@user), class: "btn btn-primary" %>
 </div>

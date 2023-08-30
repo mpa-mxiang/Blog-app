@@ -8,9 +8,15 @@
   <span>Comments: <%= @post.comments_counter %></span>
   <span>Likes: <%= @post.likes_counter %></span>
   <p><%= @post.text %></p>
-  <% @post.recent_comments.each do |comment| %>
+  <%= form_for [@user, @post, @post.comments.new], url: user_post_comments_path(@user, @post) do |f| %>
+    <%= f.text_area :text, placeholder: 'Add a comment...' %>
+    <%= f.submit 'Comment' %>
+  <% end %>
+  
+   <% @post.recent_comments.each do |comment| %>
     <li class="border border-dark w-75 m-3 list-unstyled"><%= render 'comment', comment: comment %></li>
   <% end %>
+  <%= button_to 'Like', user_post_like_path(@user, @post), method: :post %>
   </div>
   <div class="btn-div">
   <%= link_to "Home", users_path %>

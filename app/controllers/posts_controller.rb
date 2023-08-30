@@ -6,5 +6,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:comments).find(params[:id])
+    @user = @post.author
   end
 end
