@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Details</title>
-  <link rel="stylesheet" type="text/css" href="/assets/users.css"> <!-- Include your CSS file -->
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'>
 </head>
 <body>
-  <h1>User Details</h1>
-  <div class="user-details">
-  <li><%= render @user %></li>
-  <li><%= render 'bio', user: @user %></li>
-  <% @user.recent_posts.each do |post| %>
-    <li><%= render post %></li>
-  <% end %>
-</ul>
-<div class="text-center d-flex justify-content-around">
-  <%= link_to "Home", users_path %>
-  <%= link_to 'See all posts', user_posts_path(@user)' %>
+<div class="d-flex">
+<img src="<%= user.photo %>" alt="<%= user.name %>">
+  <div class="border border-dark">
+    <h1><%= @user.name %></h1>
+    <p>Number of Posts: <%= user.posts.count %></p>
+  </div>
 </div>
 </body>
 </html>
