@@ -5,15 +5,18 @@
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'>
 </head>
 <body>
-  <h1>All Users</h1>
-  <ul>
+  <div class="d-flex flex-column">
     <% @users.each do |user| %>
-      <li>
-        <img src="<%= user.photo %>" alt="<%= user.name %>">
-        <h1><%= user.name %></h1>
-        <p>Number of Posts: <%= user.posts.count %></p>
-      </li>
+      <div class="d-flex flex-row>
+        <div class="d-flex flex-colum border border-dark">
+          <img src="<%= user.photo %>">
+        </div>
+        <div class="border border-dark">
+          <h1><%= user.name %></h1>
+          <p>Number of Posts: <%= user.posts.count %></p>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  <
 </body>
 </html>
