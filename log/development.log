@@ -3908,3 +3908,160 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 15ms (Views: 8.3ms | ActiveRecord: 1.1ms | Allocations: 3856)
 
 
+Started GET "/users/7/posts/1" for 127.0.0.1 at 2023-08-29 23:07:52 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  Rendered posts/show.html.erb within layouts/application (Duration: 12.3ms | Allocations: 4934)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 5001)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.4ms | Allocations: 7104)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<ActionView::Base:0x00000000038c20>
+Did you mean?  @post):
+    4: </head>
+    5: <body>
+    6:   <h2><%= @post.title %> by <%= @post.author.name %></h2>
+    7:   <span>Comments: <%= post.comments_counter %></span>
+    8:   <span>Likes: <%= post.likes_counter %></span>
+    9:   <p><%= @post.text %></p>
+   10:   <% post.recent_comments.each do |comment| %>
+  
+app/views/posts/show.html.erb:7
+Started GET "/users/7/posts/1" for 127.0.0.1 at 2023-08-29 23:08:15 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  Rendered posts/show.html.erb within layouts/application (Duration: 10.5ms | Allocations: 4928)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 4995)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.9ms | Allocations: 7097)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<ActionView::Base:0x00000000038f68>
+Did you mean?  @post):
+     7:   <span>Comments: <%= @post.comments_counter %></span>
+     8:   <span>Likes: <%= @post.likes_counter %></span>
+     9:   <p><%= @post.text %></p>
+    10:   <% post.recent_comments.each do |comment| %>
+    11:     <li class="border border-dark w-75 m-3 list-unstyled"><%= render 'comment', comment: comment %></li>
+    12:   <% end %>
+    13: </body>
+  
+app/views/posts/show.html.erb:10
+Started GET "/users/7/posts/1" for 127.0.0.1 at 2023-08-29 23:08:21 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1550)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 2473)
+Completed 200 OK in 17ms (Views: 9.8ms | ActiveRecord: 1.8ms | Allocations: 4598)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/7/posts/1" for 127.0.0.1 at 2023-08-29 23:08:55 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/show.html.erb:11
+  Rendered posts/show.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1553)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 2482)
+Completed 200 OK in 19ms (Views: 7.5ms | ActiveRecord: 5.9ms | Allocations: 4607)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+Started GET "/users/7/posts/1" for 127.0.0.1 at 2023-08-29 23:09:14 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/show.html.erb:11
+  Rendered posts/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2650)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2717)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.7ms | Allocations: 4822)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    14:   </div>
+    15:   <div class="btn-div">
+    16:   <%= link_to "Home", users_path %>
+    17:   <%= link_to "Pagination", user_path(@user) %>  
+    18: </div>
+    19: </body>
+    20: </html>
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/7/posts/1" for 127.0.0.1 at 2023-08-29 23:09:32 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/show.html.erb:11
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1614)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2538)
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 1.0ms | Allocations: 4663)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
