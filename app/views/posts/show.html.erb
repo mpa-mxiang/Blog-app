@@ -16,7 +16,7 @@
    <% @post.recent_comments.each do |comment| %>
     <li class="border border-dark w-75 m-3 list-unstyled"><%= render 'comment', comment: comment %></li>
   <% end %>
-  <%= button_to 'Like', user_post_like_path(@user, @post), method: :post %>
+  <%= button_to 'Like', like_user_post_path(@user, @post), method: :post %>
   </div>
   <div class="btn-div">
   <%= link_to "Home", users_path %>
