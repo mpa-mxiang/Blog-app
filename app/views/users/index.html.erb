@@ -2,21 +2,21 @@
 <html>
 <head>
   <title>All Users</title>
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'>
 </head>
 <body>
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column border border-dark w-75 m-3">
     <% @users.each do |user| %>
-      <div class="d-flex flex-row>
-        <div class="d-flex flex-colum border border-dark">
+      <div class="d-flex flex-row">
+        <div class="w-25 m-3">
           <img src="<%= user.photo %>">
         </div>
-        <div class="border border-dark">
-          <h1><%= user.name %></h1>
+        <div class="border border-dark w-75 m-3">
+          <!-- Add a link to the user's show page -->
+          <h1><%= link_to user.name, user_path(user) %></h1>
           <p>Number of Posts: <%= user.posts.count %></p>
         </div>
       </div>
     <% end %>
-  <
+  </div>
 </body>
 </html>

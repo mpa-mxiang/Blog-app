@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'>
 </head>
 <body>
 <div class="d-flex">
-<img src="<%= user.photo %>" alt="<%= user.name %>">
+  <img src="<%= @user.photo %>"> 
   <div class="border border-dark">
     <h1><%= @user.name %></h1>
-    <p>Number of Posts: <%= user.posts.count %></p>
+    <p>Number of Posts: <%= @user.posts.count %></p>
   </div>
 </div>
 </body>
