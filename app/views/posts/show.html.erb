@@ -13,13 +13,24 @@
     <%= f.submit 'Comment' %>
   <% end %>
   
-   <% @post.recent_comments.each do |comment| %>
-    <li class="border border-dark w-75 m-3 list-unstyled"><%= render 'comment', comment: comment %></li>
+  <% @post.comments.each do |comment| %>
+    <li class="border border-dark w-75 m-3 list-unstyled">
+      <div class="field">
+        <%= comment.text %>
+      </div>
+    </li>
   <% end %>
+  
   <%= button_to 'Like', like_user_post_path(@user, @post), method: :post %>
-  </div>
-  <div class="btn-div">
-  <%= link_to "Home", users_path %>
 </div>
+
+
+<% @post.recent_comments.each do |comment| %>
+  <li class="border border-dark w-75 m-3 list-unstyled"><%= render 'comment', comment: comment %></li>
+<% end %>
+
+<%= render 'comment' %>
+
+
 </body>
 </html>
