@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @user = User.find(params[:user_id])
+    @posts = @user.recent_posts.includes(:comments)
   end
 
   def show
-    @post = Post.find(params[:id]) # Find a post by ID
+    @post = Post.includes(:comments).find(params[:id])
   end
 end

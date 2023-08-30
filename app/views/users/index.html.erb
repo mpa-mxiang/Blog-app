@@ -4,15 +4,19 @@
   <title>All Users</title>
 </head>
 <body>
-  <h1>All Users</h1>
-  <ul>
+  <div class="d-flex flex-column border border-dark w-75 m-3">
     <% @users.each do |user| %>
-      <li>
-        <img src="<%= user.photo %>" alt="<%= user.name %>">
-        <h1><%= user.name %></h1>
-        <p>Number of Posts: <%= user.posts.count %></p>
-      </li>
+      <div class="d-flex flex-row">
+        <div class="w-25 m-3">
+          <img src="<%= user.photo %>">
+        </div>
+        <div class="border border-dark w-75 m-3">
+          <!-- Add a link to the user's show page -->
+          <h1><%= link_to user.name, user_path(user) %></h1>
+          <p>Number of Posts: <%= user.posts.count %></p>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </body>
 </html>
