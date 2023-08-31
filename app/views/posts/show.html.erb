@@ -12,22 +12,17 @@
     <%= f.text_area :text, placeholder: 'Add a comment...' %>
     <%= f.submit 'Comment' %>
   <% end %>
-  
-  <% @post.comments.each do |comment| %>
-    <li class="border border-dark w-75 m-3 list-unstyled">
-      <div class="field">
-        <%= comment.text %>
-      </div>
-    </li>
-  <% end %>
-  
-  <%= button_to 'Like', like_user_post_path(@user, @post), method: :post %>
+  <%= link_to 'Like', like_post_path(@post), method: :post %>
+
 </div>
 
 
 <% @post.recent_comments.each do |comment| %>
-  <li class="border border-dark w-75 m-3 list-unstyled"><%= render 'comment', comment: comment %></li>
-<% end %>
+  <li class="border border-dark w-75 m-3 list-unstyled">
+  <div class="field">
+    <%= comment.text %>
+  </div>
+</li><% end %>
 
 <%= render 'comment' %>
 
