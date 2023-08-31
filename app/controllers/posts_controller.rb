@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def like
     @post = Post.find(params[:id])
     existing_like = @post.likes.find_by(user: current_user)
@@ -34,14 +34,14 @@ class PostsController < ApplicationController
 
     redirect_to user_post_path(@post.author, @post)
   end
-  
+
   def new
     @post = Post.new
   end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :text)
   end
-
 end
