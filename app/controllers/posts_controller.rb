@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to user_posts_path(current_user), notice: 'Post was successfully created.'
     else
-      @posts = current_user.recent_posts.includes(:comments) # Add this line to update @posts
+      @posts = current_user.recent_posts.includes(:comments)
       render 'new'
     end
   end
@@ -29,7 +29,6 @@ class PostsController < ApplicationController
       @post.decrement!(:likes_counter)
     else
       current_user.likes.create(post: @post)
-      @post.increment!(:likes_counter)
     end
 
     redirect_to user_post_path(@post.author, @post)
