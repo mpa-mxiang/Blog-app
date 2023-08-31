@@ -11,7 +11,6 @@
           <img src="<%= user.photo %>">
         </div>
         <div class="border border-dark w-75 m-3">
-          <!-- Add a link to the user's show page -->
           <h1><%= link_to user.name, user_path(user) %></h1>
           <p>Number of Posts: <%= user.posts.count %></p>
         </div>
