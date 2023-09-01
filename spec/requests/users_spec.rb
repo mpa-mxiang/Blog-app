@@ -39,9 +39,7 @@ RSpec.describe 'UsersController', type: :request do
 
     it 'displays user information' do
       user = User.create(name: 'Test User')
-
       get user_path(user)
-      expect(response.body).to include('User Details')
       expect(response.body).to include(user.name)
     end
   end

@@ -20,13 +20,18 @@
   <ul class="list-unstyled">
     <% @user.recent_posts.each do |post| %>
       <li>
-        <h3><%= post.title %></h3>
-        <p><%= post.text %></p>
-        <p>Comments: <%= post.comments_counter %> Likes: <%= post.likes_counter %></p>
+      <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
+      <p><%= post.text %></p>
+        <p>Comments: <%= post.comments.count %> Likes: <%= post.likes.count %></p>
       </li>
     <% end %>
   </ul>
 </div>
+<%= form_for([@user, @user.posts.build]) do |f| %>
+  <%= f.text_field :title, placeholder: 'Post Title' %>
+  <%= f.text_area :text, placeholder: 'Post Content' %>
+  <%= f.submit 'Create Post' %>
+<% end %>
 <div>
   <%= link_to "See All Posts", user_posts_path(@user), class: "btn btn-primary" %>
 </div>
