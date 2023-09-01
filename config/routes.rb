@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :new]
     end
   end
+
+  post '/posts/:post_id/likes', to: 'likes#create', as: 'post_likes'
 end
