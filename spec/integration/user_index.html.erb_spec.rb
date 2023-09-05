@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "User Index Page", type: :feature do
   before do
     # Create some sample users in the database
-    @user1 = User.create(name: 'User 1', bio: 'Bio 1' photo:'https://thispersondoesnotexist.com/')
-    @user2 = User.create(name: 'User 2', bio: 'Bio 2' photo:'https://thispersondoesnotexist.com/')
+    @user1 = User.create(name: 'User 1', bio: 'Bio 1', photo:'https://thispersondoesnotexist.com/')
+    @user2 = User.create(name: 'User 2', bio: 'Bio 2', photo:'https://thispersondoesnotexist.com/')
   end
 
   it "displays the username of all other users" do

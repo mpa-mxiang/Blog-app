@@ -50,6 +50,10 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 5.0'
+    gem 'capybara'
+      gem 'webdrivers'
+
+
 end
 
 group :development do

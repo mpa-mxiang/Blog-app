@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "User Show Page", type: :feature do
   before do
-    @user = User.create(name: 'Test User', bio: 'User Bio' photo:'https://thispersondoesnotexist.com/')
+    @user = User.create(name: 'Test User', bio: 'User Bio', photo:'https://thispersondoesnotexist.com/')
     # Create some posts for the user if needed
   end
 
