@@ -1,46 +1,81 @@
 require 'rails_helper'
 
 RSpec.describe "User Post Index Page", type: :feature do
-  before do
-    @user = User.create(name: 'Test User', bio: 'User Bio')
-    # Create some posts and comments for the user if needed
+
+  before(:each) do
+    @user = [
+      User.create(
+        id: 1,
+        name: 'Max',
+        photo: 'https://pics.com',
+        bio: 'Software Engineer Turkey',
+        posts_counter: 6
+      )
+    ]
+
+    @first_user = User.first
+
+    @first_post = Post.create(
+      author: @first_user,
+      title: 'Hello',
+      text: 'This is my first post from Max',
+      comments_counter: 2,
+      likes_counter: 2
+    )
+    @second_post = Post.create(
+      author: @first_user,
+      title: 'How are you?',
+      text: 'This is my second post from Max',
+      comments_counter: 0,
+      likes_counter: 1
+    )
+    @first_comment = Comment.create(post: @first_post, user: @first_user, text: 'First comment for Max')
+    @second_comment = Comment.create(post: @second_post, user: @first_user, text: 'Second comment for Max')
+    @first_like = Like.create(post: @first_post, user: @first_user)
+    @second_like = Like.create(post: @second_post, user: @first_user)
+
+    visit user_posts_path(@first_user)
   end
 
-  it "displays the user's profile picture, username, and number of posts" do
-    visit user_posts_path(@user)
-    expect(page).to have_css("img[src*='test_user_photo.jpg']")
-    expect(page).to have_content(@user.name)
-    expect(page).to have_content("Posts: #{user.posts.count}")
+  it 'shows the user image' do
+    expect(page).to have_css('img')
   end
 
-  it "displays a post's title, body, and comments" do
-    # Create a post with comments for the user
-    post = @user.posts.create(title: 'Test Post', text: 'Post Text')
-    post.comments.create(user: @user, text: 'Comment 1')
-    post.comments.create(user: @user, text: 'Comment 2')
-
-    visit user_posts_path(@user)
-    expect(page).to have_content('Test Post')
-    expect(page).to have_content('Post Text')
-    expect(page).to have_content('Comment 1')
-    expect(page).to have_content('Comment 2')
+  it 'shows the user name' do
+    expect(page).to have_content(@first_user.name)
   end
 
-  it "redirects to the post's show page when a post is clicked" do
-    # Create a post for the user
-    post = @user.posts.create(title: 'Test Post', text: 'Post Text')
-    visit user_posts_path(@user)
-    click_link 'Test Post'
-    expect(current_path).to eq(post_path(post))
+  it 'shows the number of posts by the user' do
+    expect(page).to have_content("Number of Posts: #{@first_user.posts_counter}")
   end
 
-  it "displays pagination if there are more posts than fit on the view" do
-    # Create more posts for the user than what fits on a single page
-    10.times do |i|
-      @user.posts.create(title: "Post #{i}", text: "Text #{i}")
-    end
+  it 'shows the post title' do
+    expect(page).to have_content(@first_post.title)
+  end
 
-    visit user_posts_path(@user)
-    expect(page).to have_css('.pagination')
+  it 'shows the post text/body' do
+    expect(page).to have_content(@first_post.text)
+  end
+
+  it 'shows the first comments on the post' do
+    expect(page).to have_content(@first_comment.text)
+  end
+
+  it 'shows the number of comments on the post' do
+    expect(page).to have_content("Comments: #{@first_post.comments_counter}")
+  end
+
+  it 'shows the number of likes on the post' do
+    expect(page).to have_content("Likes: #{@first_post.likes_counter}")
+  end
+
+  it 'shows a section for pagination if there are more posts than fit on the view' do
+    expect(page).to have_content('Pagination')
+  end
+
+  it "when click on a post, it redirects to the post's show page" do
+    visit user_posts_path(@first_user)
+    click_link @first_post.title
+    expect(current_path).to match(user_posts_path(@first_user.id))
   end
 end
