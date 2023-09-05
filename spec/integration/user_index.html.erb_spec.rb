@@ -15,8 +15,8 @@ RSpec.describe "User Index Page", type: :feature do
 
   it "displays the profile picture for each user" do
     visit users_path
-    expect(page).to have_css("img[src*='user1_photo.jpg']")
-    expect(page).to have_css("img[src*='user2_photo.jpg']")
+    expect(page).to have_css("img[src*='https://thispersondoesnotexist.com/']")
+    expect(page).to have_css("img[src*='https://thispersondoesnotexist.com/']")
   end
 
   it "displays the number of posts each user has written" do
