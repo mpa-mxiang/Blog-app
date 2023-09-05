@@ -3,3 +3,7 @@
 *::before {
   box-sizing: inherit;
 }
+
+img {
+  width: 200px;
+}
