@@ -8,7 +8,7 @@ RSpec.describe "User Show Page", type: :feature do
 
   it "displays the user's profile picture, username, bio" do
     visit root_path(@user)
-    expect(page).to have_css("img[src*='test_user_photo.jpg']")
+    expect(page).to have_css("img[src*='https://thispersondoesnotexist.com/']", wait: 10)
     expect(page).to have_content(@user.name)
     expect(page).to have_content(@user.bio)
   end
