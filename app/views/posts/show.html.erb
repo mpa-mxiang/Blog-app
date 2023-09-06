@@ -4,7 +4,8 @@
 </head>
 <body>
 <div class="border border-dark w-75 m-3">
-  <h2><%= @post.title %> by <%= @post.author.name %></h2>
+  <h2><%= @post.title %></h2>
+  <h3>by <%= link_to @post.author.name, user_path(@post.author) %>/<h3>
   <span>Comments: <%= @post.comments.count %></span>
   <span>Likes: <%= @post.likes.count %></span>
   <p><%= @post.text %></p>
