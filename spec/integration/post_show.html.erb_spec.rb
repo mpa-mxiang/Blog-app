@@ -4,7 +4,6 @@ RSpec.describe "Post Show Page", type: :feature do
   before do
     @user = User.create(name: 'Test User', bio: 'User Bio')
     @post = Post.create( author: @user, title: 'Test Post', text: 'Post Text')
-    # @post = @user.posts.create(title: 'Test Post', text: 'Post Text')
   end
 
   it "displays the post's title, author, comments, and likes" do

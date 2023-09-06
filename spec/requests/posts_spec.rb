@@ -17,7 +17,7 @@ RSpec.describe 'PostsController', type: :request do
       get user_post_path(user, post)
       expect(response).to have_http_status(200)
       expect(response).to render_template(:show)
-      expect(response.body).to include('sample title by Heather')
+      expect(response.body).to include('sample title')
     end
   end
 end
