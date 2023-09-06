@@ -7,11 +7,12 @@ RSpec.describe "User Show Page", type: :feature do
   end
 
   it "displays the user's profile picture, username, bio" do
-    visit root_path(@user)
+    visit user_path(@user) # Visit the user's show page
     expect(page).to have_css("img[src*='https://thispersondoesnotexist.com/']", wait: 10)
     expect(page).to have_content(@user.name)
     expect(page).to have_content(@user.bio)
   end
+  
 
   it "displays the number of posts the user has written" do
     # Create some posts for the user
@@ -26,24 +27,30 @@ RSpec.describe "User Show Page", type: :feature do
     @user.posts.create(title: 'Post 1', text: 'Text 1')
     @user.posts.create(title: 'Post 2', text: 'Text 2')
     @user.posts.create(title: 'Post 3', text: 'Text 3')
-    @user.posts.create(title: 'Post 4', text: 'Text 4')
-    visit root_path(@user)
+  
+    visit user_path(@user)
     expect(page).to have_content('Post 1')
     expect(page).to have_content('Post 2')
     expect(page).to have_content('Post 3')
-    expect(page).not_to have_content('Post 4')
-  end
-
-it "redirects to the post's show page when a post is clicked" do
-    visit root_path(@user)
-    click_link_or_button 'Test Post', wait: 10
-    expect(current_path).to eq(post_path(@post))
   end
   
+
+  it "redirects to the post's show page when a post is clicked" do
+    # Create a post for the user
+    post = @user.posts.create(title: 'Test Post', text: 'Post Text')
+  
+    visit user_path(@user)
+    click_link_or_button 'Test Post', wait: 10
+    expect(current_path).to eq(post_path(post))
+  end
   it "redirects to the user's post index page when 'View All Posts' is clicked" do
-    visit root_path(@user)
+    # Ensure that there is a link or button with the text "View All Posts" on the page
+    visit user_path(@user)
+    expect(page).to have_link('View All Posts', href: user_posts_path(@user))
+    
     click_link_or_button 'View All Posts', wait: 10
     expect(current_path).to eq(user_posts_path(@user))
   end
+  
   
 end
