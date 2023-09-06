@@ -41,16 +41,15 @@ RSpec.describe "User Show Page", type: :feature do
   
     visit user_path(@user)
     click_link_or_button 'Test Post', wait: 10
-    expect(current_path).to eq(post_path(post))
+    expect(current_path).to eq(user_post_path(@user, post)) # Use user_post_path instead of post_path
   end
   it "redirects to the user's post index page when 'View All Posts' is clicked" do
     # Ensure that there is a link or button with the text "View All Posts" on the page
     visit user_path(@user)
-    expect(page).to have_link('View All Posts', href: user_posts_path(@user))
+    expect(page).to have_link('See All Posts', href: user_posts_path(@user))
     
-    click_link_or_button 'View All Posts', wait: 10
+    click_link_or_button 'See All Posts', wait: 10
     expect(current_path).to eq(user_posts_path(@user))
   end
-  
   
 end
