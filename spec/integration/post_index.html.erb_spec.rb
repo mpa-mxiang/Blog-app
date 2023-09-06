@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User Post Index Page", type: :feature do
-
+RSpec.describe 'User Post Index Page', type: :feature do
   before(:each) do
     @user = [
       User.create(

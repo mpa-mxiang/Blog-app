@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe "Post Show Page", type: :feature do
+RSpec.describe 'Post Show Page', type: :feature do
   before do
     @user = User.create(name: 'Test User', bio: 'User Bio')
-    @post = Post.create( author: @user, title: 'Test Post', text: 'Post Text')
+    @post = Post.create(author: @user, title: 'Test Post', text: 'Post Text')
   end
 
   it "displays the post's title, author, comments, and likes" do
-    visit user_post_path(@user,@post)
+    visit user_post_path(@user, @post)
     expect(page).to have_content('Test Post')
-    expect(page).to have_content('Test User') 
+    expect(page).to have_content('Test User')
     expect(page).to have_content('Post Text')
   end
 

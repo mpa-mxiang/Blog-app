@@ -49,11 +49,9 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'capybara'
   gem 'rspec-rails', '~> 5.0'
-    gem 'capybara'
-      gem 'webdrivers'
-
-
+  gem 'webdrivers'
 end
 
 group :development do
